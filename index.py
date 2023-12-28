@@ -103,6 +103,6 @@ def print_message(body, from_number):
 	printer.feed(1)
 	printer.println(f"- {get_from(from_number)} -")
 
-	printer.println(datetime.datetime.now().strftime('%-I:%M%p on %b %-d, %Y'))
+	printer.println(datetime.now().strftime('%-I:%M%p on %b %-d, %Y'))
 
 	printer.feed(5)
