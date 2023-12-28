@@ -62,7 +62,7 @@ def get_recipient(from_number):
     return PEOPLE_MAP[from_number]['to']
 
 def get_from(from_number):
-    return PEOPLE_MAP[from_number['is']]
+    return PEOPLE_MAP[from_number]['is']
 
 def create_connection():
     return pymysql.connect(
