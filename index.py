@@ -2,6 +2,10 @@ from Adafruit_Thermal import *
 from datetime import datetime
 from flask import Flask, request
 import pymysql.cursors
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
 printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
