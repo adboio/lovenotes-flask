@@ -31,7 +31,7 @@ def incoming_sms():
     try:
         message_body = request.form['Body']
         log(cursor, 'INFO', f'New message from {from_number}: {message_body}')
-        print_message(message_body)
+        print_message(message_body, from_number)
     except Exception as e:
         print(e)
         log(cursor, 'ERROR', 'something happened :(')
