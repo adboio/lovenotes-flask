@@ -12,7 +12,7 @@ app = Flask(__name__)
 printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
 printer.setTimes(1000, 2100)
 
-subprocess.run([f"NGROK_AUTHTOKEN={os.environ.get('NGROK_AUTH')}", "ngrok", "http", "--domain=lovenotes.ngrok.io", "127.0.0.1:5000"])
+subprocess.run(["ngrok", "http", "--domain=lovenotes.ngrok.io", "127.0.0.1:5000"], shell=True)
 
 @app.route('/', methods=['POST'])
 def incoming_sms():
