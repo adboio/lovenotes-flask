@@ -4,12 +4,15 @@ from flask import Flask, request
 import pymysql.cursors
 from dotenv import load_dotenv
 import os
+import subprocess
 
 load_dotenv()
 
 app = Flask(__name__)
 printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
 printer.setTimes(1000, 2100)
+
+subprocess.run(["ngrok", "http", "--domain=lovenotes.ngrok.io", "127.0.0.1:5000"])
 
 @app.route('/', methods=['POST'])
 def incoming_sms():
@@ -106,3 +109,6 @@ def print_message(body, from_number):
 	printer.println(datetime.now().strftime('%-I:%M%p on %b %-d, %Y'))
 
 	printer.feed(5)
+
+if __name__ == "__main__":
+    app.run()
